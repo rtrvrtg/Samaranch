@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  start: 2012-02-14 19:37:40
+  end: 2012-02-14 19:37:40
+  location_id: 1
+  session_type_id: 1
+  description: MyText
+
+two:
+  title: MyString
+  start: 2012-02-14 19:37:40
+  end: 2012-02-14 19:37:40
+  location_id: 1
+  session_type_id: 1
+  description: MyText

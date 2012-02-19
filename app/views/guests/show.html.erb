@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @guest.name %>
+</p>
+
+<%= image_tag @guest.photo.url %>
+
+<p>
+  <b>Sorting name:</b>
+  <%= @guest.sorting_name %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @guest.bio %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @guest.website %>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <%= @guest.twitter %>
+</p>
+
+<p>
+  <b>Facebook:</b>
+  <%= @guest.facebook %>
+</p>
+
+
+<%= link_to 'Edit', edit_guest_path(@guest) %> |
+<%= link_to 'Back', guests_path %>

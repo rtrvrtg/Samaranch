@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @sponsor_type.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @sponsor_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_sponsor_type_path(@sponsor_type) %> |
+<%= link_to 'Back', sponsor_types_path %>

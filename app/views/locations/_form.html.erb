@@ -1,0 +1,73 @@
+<div class="row-fluid">
+
+<%= form_for(@location, :html => {:class => "form-horizontal span6"}) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name %>
+    <div class="controls"><%= f.text_field :name %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description %>
+    <div class="controls"><%= f.text_area :description %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :venue_map_id %>
+	<div class="controls"><%= collection_select(:location, 
+					  :venue_map_id, 
+					  VenueMap.all, 
+					  :id, 
+					  :map_name, 
+					  :prompt => 'Select a venue map') %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :marker_id %>
+	<div class="controls"><%= collection_select(:location, 
+					  :marker_id, 
+					  Marker.all, 
+					  :id, 
+					  :title, 
+					  :prompt => 'Select a marker') %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :x %>
+    <div class="controls"><%= f.text_field :x %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :y %>
+    <div class="controls"><%= f.text_field :y %></div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<div id="location-edit-container" class="span6" style="overflow: auto;">
+
+<div id="map-container"></div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+var VML = new Samaranch.VenueMapLoc({
+	container: 'map-container',
+	x_dst: 'location_x',
+	y_dst: 'location_y',
+	mapswitch: 'location_venue_map_id'
+});
+
+});
+</script>

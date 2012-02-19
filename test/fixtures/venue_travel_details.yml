@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  venue_id: 1
+  method: MyString
+  details: MyText
+
+two:
+  venue_id: 1
+  method: MyString
+  details: MyText

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  sorting_name: MyString
+  bio: MyText
+  website: MyText
+  twitter: MyText
+  facebook: MyText
+
+two:
+  name: MyString
+  sorting_name: MyString
+  bio: MyText
+  website: MyText
+  twitter: MyText
+  facebook: MyText

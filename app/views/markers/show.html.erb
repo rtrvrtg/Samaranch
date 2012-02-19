@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @marker.title %>
+</p>
+
+<p>
+  <b>Anchor x:</b>
+  <%= @marker.anchor_x %>
+</p>
+
+<p>
+  <b>Anchor y:</b>
+  <%= @marker.anchor_y %>
+</p>
+
+
+<%= link_to 'Edit', edit_marker_path(@marker) %> |
+<%= link_to 'Back', markers_path %>

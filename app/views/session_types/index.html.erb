@@ -1,0 +1,25 @@
+<h1>Listing session_types</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @session_types.each do |session_type| %>
+  <tr>
+    <td><%= session_type.title %></td>
+    <td><%= session_type.description %></td>
+    <td><%= link_to 'Show', session_type %></td>
+    <td><%= link_to 'Edit', edit_session_type_path(session_type) %></td>
+    <td><%= link_to 'Destroy', session_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Session type', new_session_type_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  sponsor_type_id: 1
+  description: MyText
+  website: MyText
+  twitter: MyText
+  facebook: MyText
+  location_id: 1
+
+two:
+  name: MyString
+  sponsor_type_id: 1
+  description: MyText
+  website: MyText
+  twitter: MyText
+  facebook: MyText
+  location_id: 1

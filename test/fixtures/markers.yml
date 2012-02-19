@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  anchor_x: 1
+  anchor_y: 1
+
+two:
+  title: MyString
+  anchor_x: 1
+  anchor_y: 1

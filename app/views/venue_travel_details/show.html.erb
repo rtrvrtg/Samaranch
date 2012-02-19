@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Venue:</b>
+  <%= @venue_travel_detail.venue_id %>
+</p>
+
+<p>
+  <b>Method:</b>
+  <%= @venue_travel_detail.method %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @venue_travel_detail.details %>
+</p>
+
+
+<%= link_to 'Edit', edit_venue_travel_detail_path(@venue_travel_detail) %> |
+<%= link_to 'Back', venue_travel_details_path %>

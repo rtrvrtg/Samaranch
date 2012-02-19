@@ -1,0 +1,59 @@
+<%= form_for(@sponsor, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @sponsor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
+
+      <ul>
+      <% @sponsor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name %>
+    <div class="controls"><%= f.text_field :name %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :logo %>
+    <div class="controls"><%= f.file_field :logo %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sponsor_type_id %>
+    <div class="controls"><%= collection_select(:sponsor, 
+                          :sponsor_type_id, 
+                          SponsorType.all, 
+                          :id, 
+                          :title, 
+                          :prompt => 'Select a sponsor type') %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description %>
+    <div class="controls"><%= f.text_area :description %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :website %>
+    <div class="controls"><%= f.text_area :website %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :twitter %>
+    <div class="controls"><%= f.text_area :twitter %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :facebook %>
+    <div class="controls"><%= f.text_area :facebook %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :location_id %>
+    <div class="controls"><%= collection_select(:sponsor, 
+                          :location_id, 
+                          Location.all, 
+                          :id, 
+                          :name, 
+                          :prompt => 'Select a location') %></div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

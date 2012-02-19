@@ -1,0 +1,34 @@
+<%= form_for(@venue_map, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @venue_map.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@venue_map.errors.count, "error") %> prohibited this venue_map from being saved:</h2>
+
+      <ul>
+      <% @venue_map.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :venue_id %>
+    <div class="controls"><%= collection_select(:venue_map, 
+                          :venue_id, 
+                          Venue.all, 
+                          :id, 
+                          :name, 
+                          :prompt => 'Select a venue') %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :map_image %>
+    <div class="controls"><%= f.file_field :map_image %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :map_name %>
+    <div class="controls"><%= f.text_field :map_name %></div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

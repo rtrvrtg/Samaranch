@@ -1,0 +1,58 @@
+<%= form_for(@guest, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @guest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
+
+      <ul>
+      <% @guest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name %>
+    <div class="controls"><%= f.text_field :name %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :photo %>
+    <div class="controls"><%= f.file_field :photo %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sorting_name %>
+    <div class="controls"><%= f.text_field :sorting_name %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :bio %>
+    <div class="controls"><%= f.text_area :bio %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :website %>
+    <div class="controls"><%= f.text_area :website %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :twitter %>
+    <div class="controls"><%= f.text_area :twitter %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :facebook %>
+    <div class="controls"><%= f.text_area :facebook %></div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :sessions %>
+    <div class="controls"><%= collection_select(:guest, 
+                          :sessions, 
+                          Session.all, 
+                          :id, 
+                          :title, 
+                          {}, {
+                          	:multiple => 'true'
+                          }) %></div>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

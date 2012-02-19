@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @sponsor.name %>
+</p>
+
+<%= image_tag @sponsor.photo.url %>
+
+<p>
+  <b>Sponsor type:</b>
+  <%= @sponsor.sponsor_type_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @sponsor.description %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @sponsor.website %>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <%= @sponsor.twitter %>
+</p>
+
+<p>
+  <b>Facebook:</b>
+  <%= @sponsor.facebook %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @sponsor.location_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
+<%= link_to 'Back', sponsors_path %>

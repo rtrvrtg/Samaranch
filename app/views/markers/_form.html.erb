@@ -1,0 +1,59 @@
+<div class="row-fluid">
+
+<%= form_for(@marker, :html => {:class => "form-horizontal span6"}) do |f| %>
+  <% if @marker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@marker.errors.count, "error") %> prohibited this marker from being saved:</h2>
+
+      <ul>
+      <% @marker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title %>
+    <div class="controls"><%= f.text_field :title %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :anchor_x %>
+    <div class="controls"><%= f.number_field :anchor_x %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :anchor_y %>
+    <div class="controls"><%= f.number_field :anchor_y %></div>
+  </div>
+  <div class="control-group">
+    <%= f.label :marker_image %>
+    <div class="controls"><%= f.file_field :marker_image %></div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+<div id="location-edit-container" class="span6" style="overflow: auto;">
+
+<div id="marker-container">
+<% if !@marker.marker_image.nil? %>
+<%= image_tag @marker.marker_image.url %>
+<% end %>
+</div>
+
+<div id="map-container"></div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+var LML = new Samaranch.LocationMarkerLoc({
+	container: 'marker-container',
+	x_dst: 'marker_anchor_x',
+	y_dst: 'marker_anchor_y'
+});
+
+});
+</script>

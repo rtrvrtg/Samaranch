@@ -1,0 +1,11 @@
+This is Samaranch, a little Rails-based tool for event management.  It's still 
+in development, so please pardon my dust.
+
+To get cracking, run
+
+rake db:migrate
+
+and then do whatever you'd usually do with a rails app.
+
+For the time being, this app is © 2012 Geoffrey Roberts and SMASH!
+All rights reserved.
