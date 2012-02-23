@@ -17,11 +17,11 @@
   </div>
   <div class="control-group">
     <%= f.label :start %>
-    <div class="controls"><%= f.datetime_select :start %></div>
+    <div class="controls"><%= f.text_field :start, :class => 'datepicker' %></div>
   </div>
   <div class="control-group">
     <%= f.label :end %>
-    <div class="controls"><%= f.datetime_select :end %></div>
+    <div class="controls"><%= f.text_field :end, :class => 'datepicker' %></div>
   </div>
   <div class="control-group">
     <%= f.label :location_id %>
@@ -57,3 +57,15 @@
     <%= f.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>
+
+<script>
+
+$(function() {
+  $(".datepicker").datetimepicker({
+  	dateFormat: 'yy-mm-dd', 
+  	timeFormat: 'hh:mm:ss', 
+  	ampm: false
+  });
+});
+
+</script>
