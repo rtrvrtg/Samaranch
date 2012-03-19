@@ -25,6 +25,7 @@ gem 'twitter_bootstrap_form_for'
 gem 'therubyracer'
 gem 'sass-rails', '~> 3.1'
 gem 'bootstrap-sass', '~> 2.0.0'
+gem 'uglifier'
 gem 'underscore-rails'
 
 gem 'basecamp'
