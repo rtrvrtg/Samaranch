@@ -1,6 +1,6 @@
 class SessionTypesController < ApplicationController
 
-  before_filter :authenticate, :only => :index, :show, :new, :edit, :create, :update, :destroy
+  before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /session_types
   # GET /session_types.xml

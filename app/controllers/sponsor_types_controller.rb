@@ -1,6 +1,6 @@
 class SponsorTypesController < ApplicationController
 
-  before_filter :authenticate, :only => :index, :show, :new, :edit, :create, :update, :destroy
+  before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /sponsor_types
   # GET /sponsor_types.xml

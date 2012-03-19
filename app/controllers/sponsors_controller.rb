@@ -1,6 +1,6 @@
 class SponsorsController < ApplicationController
 
-  before_filter :authenticate, :only => :index, :show, :new, :edit, :create, :update, :destroy
+  before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /sponsors
   # GET /sponsors.xml

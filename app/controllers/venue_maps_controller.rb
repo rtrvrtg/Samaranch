@@ -1,6 +1,6 @@
 class VenueMapsController < ApplicationController
 
-  before_filter :authenticate, :only => :index, :show, :new, :edit, :create, :update, :destroy
+  before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /venue_maps
   # GET /venue_maps.xml
