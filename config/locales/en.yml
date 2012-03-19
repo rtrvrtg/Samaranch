@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    label:
+      user_session:
+        login: "Basecamp User Name"

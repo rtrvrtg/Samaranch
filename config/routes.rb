@@ -18,6 +18,8 @@ Locationmgr::Application.routes.draw do
   resources :venue_travel_details
 
   resources :venues
+  
+  resources :user_sessions
 
   resources :export
   

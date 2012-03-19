@@ -1,27 +1,28 @@
-<h1>Listing markers</h1>
+<h1>Listing Markers</h1>
 
-<table>
+<table class="table table-bordered table-striped">
+<thead>
   <tr>
     <th>Title</th>
-    <th>Anchor x</th>
-    <th>Anchor y</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"></th>
   </tr>
-
+</thead>
+<tbody>
 <% @markers.each do |marker| %>
   <tr>
-    <td><%= marker.title %></td>
-    <td><%= marker.anchor_x %></td>
-    <td><%= marker.anchor_y %></td>
+    <td><%= image_tag marker.marker_image.url(:smallthumb) %> <%= marker.title %></td>
     <td><%= link_to 'Show', marker %></td>
     <td><%= link_to 'Edit', edit_marker_path(marker) %></td>
     <td><%= link_to 'Destroy', marker, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+</tbody>
+<tfoot>
+	<tr><td colspan="4">
+		<%= link_to 'New Marker', new_marker_path %>
+	</td></tr>
+</tfoot>
+</tbody>
 </table>
 
-<br />
 
-<%= link_to 'New Marker', new_marker_path %>

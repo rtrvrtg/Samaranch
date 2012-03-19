@@ -27,5 +27,8 @@ Locationmgr::Application.configure do
   
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  config.basecamp_name = "smashconvention"
+  
 end
 

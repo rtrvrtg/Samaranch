@@ -1,31 +1,30 @@
-<h1>Listing locations</h1>
+<h1>Listing Locations</h1>
 
-<table>
+<table class="table table-bordered table-striped">
+<thead>
   <tr>
     <th>Name</th>
-    <th>Description</th>
+    <th>Venue</th>
     <th>Venue map</th>
-    <th>X</th>
-    <th>Y</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"></th>
   </tr>
-
+</thead>
+<tbody>
 <% @locations.each do |location| %>
   <tr>
     <td><%= location.name %></td>
-    <td><%= location.description %></td>
-    <td><%= location.venue_map_id %></td>
-    <td><%= location.x %></td>
-    <td><%= location.y %></td>
+    <td><%= location.venue_map.venue.name %></td>
+    <td><%= location.venue_map.map_name %></td>
     <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Edit', edit_location_path(location) %></td>
     <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
+<tfoot>
+	<tr><td colspan="6">
+		<%= link_to 'Create New Location', new_location_path %>
+	</td></tr>
+</tfoot>
+</tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Location', new_location_path %>

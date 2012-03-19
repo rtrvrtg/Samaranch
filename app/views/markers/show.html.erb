@@ -1,20 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag marker.marker_image.url %>
+
 <p>
   <b>Title:</b>
   <%= @marker.title %>
 </p>
 
 <p>
-  <b>Anchor x:</b>
-  <%= @marker.anchor_x %>
+  <b>Anchor position:</b>
+  <%= @marker.anchor_x %> &times; <%= @marker.anchor_y %>
 </p>
-
-<p>
-  <b>Anchor y:</b>
-  <%= @marker.anchor_y %>
-</p>
-
 
 <%= link_to 'Edit', edit_marker_path(@marker) %> |
 <%= link_to 'Back', markers_path %>

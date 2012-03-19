@@ -1,6 +1,7 @@
-<h1>Listing session_types</h1>
+<h1>Listing Session Types</h1>
 
-<table>
+<table class="table table-bordered table-striped">
+<thead>
   <tr>
     <th>Title</th>
     <th>Description</th>
@@ -8,7 +9,8 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @session_types.each do |session_type| %>
   <tr>
     <td><%= session_type.title %></td>
@@ -18,8 +20,13 @@
     <td><%= link_to 'Destroy', session_type, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
+<tfoot>
+	<tr><td colspan="4">
+		<%= link_to 'New Session type', new_session_type_path %>
+	</td></tr>
+</tfoot>
+</tbody>
 </table>
 
-<br />
 
-<%= link_to 'New Session type', new_session_type_path %>

@@ -1,3 +1,13 @@
 @import "bootstrap";
 
+/* Rails scaffold style compatibility */
+.error_explanation {
+  @extend .alert-message;
+  @extend .block-message;
+  @extend .error;
+}
 
+.field_with_errors {
+  // pulled from div.clearfix.error
+  @include formFieldState(#b94a48, #ee5f5b, lighten(#ee5f5b, 30%));
+}

@@ -1,0 +1,13 @@
+host = settings.basecamp_domain + '.basecamphq.com'
+  begin
+    Basecamp.establish_connection! host, params[:username], params[:password], true
+    token = Basecamp.get_token
+    session[:username] = params[:username] unless token.nil?
+  rescue ArgumentError
+  end
+  
+  if is_logged_in
+    redirect session.delete(:intended_url)
+  else
+    redirect '/login'
+  end

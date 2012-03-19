@@ -1,25 +1,28 @@
-<h1>Listing sponsor_types</h1>
+<h1>Listing Sponsor Types</h1>
 
-<table>
+<table class="table table-bordered table-striped">
+<thead>
   <tr>
     <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"></th>
   </tr>
-
+</thead>
+<tbody>
 <% @sponsor_types.each do |sponsor_type| %>
   <tr>
     <td><%= sponsor_type.title %></td>
-    <td><%= sponsor_type.description %></td>
     <td><%= link_to 'Show', sponsor_type %></td>
     <td><%= link_to 'Edit', edit_sponsor_type_path(sponsor_type) %></td>
     <td><%= link_to 'Destroy', sponsor_type, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
+<tfoot>
+	<tr><td colspan="4">
+		<%= link_to 'New Sponsor type', new_sponsor_type_path %>
+	</td></tr>
+</tfoot>
+</tbody>
 </table>
 
-<br />
 
-<%= link_to 'New Sponsor type', new_sponsor_type_path %>

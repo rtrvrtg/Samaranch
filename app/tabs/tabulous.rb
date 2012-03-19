@@ -57,18 +57,24 @@ Tabulous.setup do |config|
       #------------------------------------------------------------------------------------------------------------------------------------#
       #    TAB NAME                     |    DISPLAY TEXT              |    PATH                         |    VISIBLE?    |    ENABLED?    #
       #------------------------------------------------------------------------------------------------------------------------------------#
+
+      [    :user_sessions_tab           ,    'Log In'                  ,    user_sessions_path           ,    true        ,    true        ],
+
+      [    :venues_tab                  ,    'Venues'                  ,    venues_path                  ,    true        ,    true        ],
+      [    :venue_travel_details_tab    ,    'Venue Travel Details'    ,    venue_travel_details_path    ,    true        ,    true        ],
+      [    :venue_maps_tab              ,    'Venue Maps'              ,    venue_maps_path              ,    true        ,    true        ],
+      
+      [    :locations_tab               ,    'Locations'               ,    locations_path               ,    true        ,    true        ],
+      [    :markers_tab                 ,    'Markers'                 ,    markers_path                 ,    true        ,    true        ],
+      
       [    :sponsors_tab                ,    'Sponsors'                ,    sponsors_path                ,    true        ,    true        ],
       [    :sponsor_types_tab           ,    'Sponsor Types'           ,    sponsor_types_path           ,    true        ,    true        ],
       [    :guests_tab                  ,    'Guests'                  ,    guests_path                  ,    true        ,    true        ],
       [    :sessions_tab                ,    'Sessions'                ,    sessions_path                ,    true        ,    true        ],
       [    :session_types_tab           ,    'Session Types'           ,    session_types_path           ,    true        ,    true        ],
-      [    :locations_tab               ,    'Locations'               ,    locations_path               ,    true        ,    true        ],
-      [    :markers_tab                 ,    'Markers'                 ,    markers_path                 ,    true        ,    true        ],
-      [    :venue_maps_tab              ,    'Venue Maps'              ,    venue_maps_path              ,    true        ,    true        ],
-      [    :venue_travel_details_tab    ,    'Venue Travel Details'    ,    venue_travel_details_path    ,    true        ,    true        ],
-      [    :venues_tab                  ,    'Venues'                  ,    venues_path                  ,    true        ,    true        ],
-      [    :admin_tab                   ,    'Admin'                   ,    admin_index_path             ,    true        ,    true        ],
-      [    :admin_tab                   ,    'Admin'                   ,    root_path                    ,    true        ,    true        ],
+
+      [    :admin_tab                   ,    'Admin'                   ,    admin_index_path             ,    false       ,    true        ],
+      [    :admin_tab                   ,    'Main'                    ,    root_path                    ,    true        ,    true        ],
       #------------------------------------------------------------------------------------------------------------------------------------#
       #    TAB NAME                     |    DISPLAY TEXT              |    PATH                         |    VISIBLE?    |    ENABLED?    #
       #------------------------------------------------------------------------------------------------------------------------------------#
@@ -94,6 +100,7 @@ Tabulous.setup do |config|
       #------------------------------------------------------------------------------------#
       #    CONTROLLER               |    ACTION          |    TAB                          #
       #------------------------------------------------------------------------------------#
+      [    :user_sessions           ,    :all_actions    ,    :user_sessions_tab           ],
       [    :sponsors                ,    :all_actions    ,    :sponsors_tab                ],
       [    :sponsor_types           ,    :all_actions    ,    :sponsor_types_tab           ],
       [    :guests                  ,    :all_actions    ,    :guests_tab                  ],

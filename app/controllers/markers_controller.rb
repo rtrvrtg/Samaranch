@@ -1,4 +1,7 @@
 class MarkersController < ApplicationController
+
+  before_filter :authenticate, :only => :index, :show, :new, :edit, :create, :update, :destroy
+
   # GET /markers
   # GET /markers.json
   def index

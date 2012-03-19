@@ -1,0 +1,25 @@
+%h1 Log In
+- if @user_session.errors.any?
+  .error_explanation
+    - @user_session.errors.full_messages.each do |msg|
+      .alert.alert-block
+        %a.close{:data_dismiss => "alert"} ×
+        = msg
+    -
+-
+= form_for @user_session, :html => {:class => "form-horizontal"} do |f|
+  .control-group
+    = f.label :login
+    .controls
+      = f.text_field :login
+  .control-group
+    = f.label :password
+    .controls
+      = f.password_field :password
+  .control-group
+    = f.label :remember_me
+    .controls
+      = f.check_box :remember_me
+  .form-actions
+    = f.submit "Login", :class => 'btn btn-primary'
+-

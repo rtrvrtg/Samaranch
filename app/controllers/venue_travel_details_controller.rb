@@ -1,4 +1,7 @@
 class VenueTravelDetailsController < ApplicationController
+
+  before_filter :authenticate, :only => :index, :show, :new, :edit, :create, :update, :destroy
+
   # GET /venue_travel_details
   # GET /venue_travel_details.xml
   def index

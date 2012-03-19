@@ -1,25 +1,30 @@
-<h1>Listing venue_maps</h1>
+<h1>Listing Venue Maps</h1>
 
-<table>
+<table class="table table-bordered table-striped">
+<thead>
   <tr>
     <th>Venue</th>
     <th>Map name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"></th>
   </tr>
-
+</thead>
+<tbody>
 <% @venue_maps.each do |venue_map| %>
   <tr>
-    <td><%= venue_map.venue_id %></td>
+    <td><%= venue_map.venue.name %></td>
     <td><%= venue_map.map_name %></td>
     <td><%= link_to 'Show', venue_map %></td>
     <td><%= link_to 'Edit', edit_venue_map_path(venue_map) %></td>
     <td><%= link_to 'Destroy', venue_map, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
+<tfoot>
+	<tr><td colspan="5">
+		<%= link_to 'New Venue map', new_venue_map_path %>
+	</td></tr>
+</tfoot>
+</tbody>
 </table>
 
-<br />
 
-<%= link_to 'New Venue map', new_venue_map_path %>

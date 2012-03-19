@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219033511) do
+ActiveRecord::Schema.define(:version => 20120223071948) do
 
   create_table "guests", :force => true do |t|
     t.string   "name"
@@ -98,6 +98,18 @@ ActiveRecord::Schema.define(:version => 20120219033511) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "login",             :null => false
+    t.string   "email",             :null => false
+    t.string   "first_name",        :null => false
+    t.string   "last_name",         :null => false
+    t.string   "crypted_password",  :null => false
+    t.string   "password_salt",     :null => false
+    t.string   "persistence_token", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "venue_maps", :force => true do |t|
