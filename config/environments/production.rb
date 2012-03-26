@@ -56,5 +56,5 @@ Locationmgr::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
   
-  config.basecamp_name = "smashconvention"
+  config.basecamp_name = ENV['BASECAMP_NAME']
 end
