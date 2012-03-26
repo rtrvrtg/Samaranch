@@ -15,6 +15,9 @@ group :production do
   gem 'pg'
 end
 
+gem 'net-ssh'
+gem 'net-sftp'
+
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'tabulous'
 

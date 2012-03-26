@@ -73,6 +73,9 @@ GEM
     mime-types (1.17.2)
     multi_json (1.1.0)
     multipart-post (1.1.5)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.3.0)
     oauth2 (0.5.2)
       faraday (~> 0.7)
       multi_json (~> 1.0)
@@ -146,6 +149,8 @@ DEPENDENCIES
   bootstrap-sass (~> 2.0.0)
   haml
   jquery-rails
+  net-sftp
+  net-ssh
   paperclip!
   pg
   rails (= 3.1)

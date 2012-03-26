@@ -28,7 +28,12 @@ Locationmgr::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
-  config.basecamp_name = "smashconvention"
+  config.basecamp_name = ENV['BASECAMP_NAME']
+  
+  config.storage_host = ENV['STORAGE_HOST']
+  config.storage_user = ENV['STORAGE_USER']
+  config.storage_pass = ENV['STORAGE_PASS']
+  config.storage_root = ENV['STORAGE_ROOT']
   
 end
 
