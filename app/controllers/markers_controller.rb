@@ -1,6 +1,7 @@
 class MarkersController < ApplicationController
 
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  caches_page [:index, :show]
 
   # GET /markers
   # GET /markers.json
@@ -47,6 +48,8 @@ class MarkersController < ApplicationController
 
     respond_to do |format|
       if @marker.save
+        expire_page :action => :index
+        
         format.html { redirect_to @marker, notice: 'Marker was successfully created.' }
         format.json { render json: @marker, status: :created, location: @marker }
       else
@@ -63,6 +66,9 @@ class MarkersController < ApplicationController
 
     respond_to do |format|
       if @marker.update_attributes(params[:marker])
+        expire_page :action => :index
+        expire_page :action => :show, :id => params[:id]
+        
         format.html { redirect_to @marker, notice: 'Marker was successfully updated.' }
         format.json { head :ok }
       else
@@ -77,6 +83,9 @@ class MarkersController < ApplicationController
   def destroy
     @marker = Marker.find(params[:id])
     @marker.destroy
+
+	expire_page :action => :index
+	expire_page :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to markers_url }

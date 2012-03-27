@@ -1,6 +1,13 @@
 class ExportController < ApplicationController
   
+  caches_page :index
+  
   def index
+    
+    if request.query_parameters.has_key?('reset') then
+      expire_page :action => :index
+    end
+    
     respond_to do |format|
       format.json { render :json => {
       	:venues => Venue.all.as_json,
