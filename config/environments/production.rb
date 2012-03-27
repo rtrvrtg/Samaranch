@@ -57,4 +57,10 @@ Locationmgr::Application.configure do
   config.assets.digest = true
   
   config.basecamp_name = ENV['BASECAMP_NAME']
+  
+  config.storage_host = ENV['STORAGE_HOST']
+  config.storage_user = ENV['STORAGE_USER']
+  config.storage_pass = ENV['STORAGE_PASS']
+  config.storage_root = ENV['STORAGE_ROOT']
+  config.storage_root_url = ENV['STORAGE_ROOT_URL']
 end
