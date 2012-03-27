@@ -10,6 +10,10 @@ module Paperclip
           @user = @options[:sftp_user]
           @password = @options[:sftp_password]
         end
+        
+        Paperclip.interpolates(:url_root) do |attachment, style|
+          "#{attachment.url_root}/#{attachment.path(style).gsub(attachment.path_root, "")}"
+        end
       end
 
       def ssh
@@ -17,7 +21,7 @@ module Paperclip
       end
 
       def exists? style = default_style
-        ssh.exec!("ls #{path(style)}#{File.basename(file.path)} 2>/dev/null") ? true : false
+        ssh.exec!("ls #{path(style)} 2>/dev/null") ? true : false
       end
 
       def to_file style = default_style
@@ -32,9 +36,9 @@ module Paperclip
           file.close
           Rails.logger.debug("[paperclip] -> #{File.dirname(path(style_name))}")
           ssh.exec! "mkdir -p #{File.dirname(path(style_name))}"
-          Rails.logger.debug("[paperclip] -> #{path(style_name)}#{File.basename(file.path)}")
-          ssh.sftp.upload!(file.path, path(style_name) + File.basename(file.path))
-          ssh.sftp.setstat!(path(style_name) + File.basename(file.path), :permissions => 0644)
+          Rails.logger.debug("[paperclip] -> #{path(style_name)}")
+          ssh.sftp.upload!(file.path, path(style_name))
+          ssh.sftp.setstat!(path(style_name), :permissions => 0644)
         end
         @queued_for_write = {}
       end

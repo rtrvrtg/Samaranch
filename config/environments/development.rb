@@ -34,6 +34,7 @@ Locationmgr::Application.configure do
   config.storage_user = ENV['STORAGE_USER']
   config.storage_pass = ENV['STORAGE_PASS']
   config.storage_root = ENV['STORAGE_ROOT']
+  config.storage_root_url = ENV['STORAGE_ROOT_URL']
   
 end
 
