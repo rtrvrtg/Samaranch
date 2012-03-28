@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  caches_page [:index, :show]
 
   # GET /sessions
   # GET /sessions.xml
@@ -47,6 +48,8 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.save
+      	expire_page :action => :index
+      	
         format.html { redirect_to(@session, :notice => 'Session was successfully created.') }
         format.xml  { render :xml => @session, :status => :created, :location => @session }
       else
@@ -63,6 +66,9 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.update_attributes(params[:session])
+      	expire_page :action => :index
+	    expire_page :action => :show, :id => params[:id]
+	    
         format.html { redirect_to(@session, :notice => 'Session was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -77,6 +83,9 @@ class SessionsController < ApplicationController
   def destroy
     @session = Session.find(params[:id])
     @session.destroy
+    
+    expire_page :action => :index
+    expire_page :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(sessions_url) }

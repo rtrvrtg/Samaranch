@@ -1,6 +1,7 @@
 class VenueMapsController < ApplicationController
 
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  caches_page [:index, :show]
 
   # GET /venue_maps
   # GET /venue_maps.xml
@@ -53,6 +54,8 @@ class VenueMapsController < ApplicationController
 
     respond_to do |format|
       if @venue_map.save
+      	expire_page :action => :index
+      	
         format.html { redirect_to(@venue_map, :notice => 'Venue map was successfully created.') }
         format.xml  { render :xml => @venue_map, :status => :created, :location => @venue_map }
       else
@@ -69,6 +72,9 @@ class VenueMapsController < ApplicationController
 
     respond_to do |format|
       if @venue_map.update_attributes(params[:venue_map])
+      	expire_page :action => :index
+	    expire_page :action => :show, :id => params[:id]
+	    
         format.html { redirect_to(@venue_map, :notice => 'Venue map was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -83,6 +89,9 @@ class VenueMapsController < ApplicationController
   def destroy
     @venue_map = VenueMap.find(params[:id])
     @venue_map.destroy
+    
+    expire_page :action => :index
+    expire_page :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(venue_maps_url) }

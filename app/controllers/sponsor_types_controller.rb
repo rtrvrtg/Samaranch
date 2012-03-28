@@ -1,6 +1,7 @@
 class SponsorTypesController < ApplicationController
 
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  caches_page [:index, :show]
 
   # GET /sponsor_types
   # GET /sponsor_types.xml
@@ -47,6 +48,8 @@ class SponsorTypesController < ApplicationController
 
     respond_to do |format|
       if @sponsor_type.save
+      	expire_page :action => :index
+      	
         format.html { redirect_to(@sponsor_type, :notice => 'Sponsor type was successfully created.') }
         format.xml  { render :xml => @sponsor_type, :status => :created, :location => @sponsor_type }
       else
@@ -63,6 +66,9 @@ class SponsorTypesController < ApplicationController
 
     respond_to do |format|
       if @sponsor_type.update_attributes(params[:sponsor_type])
+      	expire_page :action => :index
+	    expire_page :action => :show, :id => params[:id]
+	    
         format.html { redirect_to(@sponsor_type, :notice => 'Sponsor type was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -77,6 +83,9 @@ class SponsorTypesController < ApplicationController
   def destroy
     @sponsor_type = SponsorType.find(params[:id])
     @sponsor_type.destroy
+    
+    expire_page :action => :index
+    expire_page :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(sponsor_types_url) }

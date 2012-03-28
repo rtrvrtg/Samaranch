@@ -1,6 +1,7 @@
 class SponsorsController < ApplicationController
 
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  caches_page [:index, :show]
 
   # GET /sponsors
   # GET /sponsors.xml
@@ -47,6 +48,8 @@ class SponsorsController < ApplicationController
 
     respond_to do |format|
       if @sponsor.save
+      	expire_page :action => :index
+      	
         format.html { redirect_to(@sponsor, :notice => 'Sponsor was successfully created.') }
         format.xml  { render :xml => @sponsor, :status => :created, :location => @sponsor }
       else
@@ -63,6 +66,9 @@ class SponsorsController < ApplicationController
 
     respond_to do |format|
       if @sponsor.update_attributes(params[:sponsor])
+      	expire_page :action => :index
+	    expire_page :action => :show, :id => params[:id]
+	    
         format.html { redirect_to(@sponsor, :notice => 'Sponsor was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -77,6 +83,9 @@ class SponsorsController < ApplicationController
   def destroy
     @sponsor = Sponsor.find(params[:id])
     @sponsor.destroy
+    
+    expire_page :action => :index
+    expire_page :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(sponsors_url) }

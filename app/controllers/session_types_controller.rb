@@ -1,6 +1,7 @@
 class SessionTypesController < ApplicationController
 
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  caches_page [:index, :show]
 
   # GET /session_types
   # GET /session_types.xml
@@ -47,6 +48,8 @@ class SessionTypesController < ApplicationController
 
     respond_to do |format|
       if @session_type.save
+      	expire_page :action => :index
+      	
         format.html { redirect_to(@session_type, :notice => 'Session type was successfully created.') }
         format.xml  { render :xml => @session_type, :status => :created, :location => @session_type }
       else
@@ -63,6 +66,9 @@ class SessionTypesController < ApplicationController
 
     respond_to do |format|
       if @session_type.update_attributes(params[:session_type])
+      	expire_page :action => :index
+	    expire_page :action => :show, :id => params[:id]
+	    
         format.html { redirect_to(@session_type, :notice => 'Session type was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -77,6 +83,9 @@ class SessionTypesController < ApplicationController
   def destroy
     @session_type = SessionType.find(params[:id])
     @session_type.destroy
+    
+    expire_page :action => :index
+    expire_page :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(session_types_url) }

@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  caches_page [:index, :show]  
   
   # GET /locations
   # GET /locations.xml
@@ -47,6 +48,8 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
+      	expire_page :action => :index
+      	
         format.html { redirect_to(@location, :notice => 'Location was successfully created.') }
         format.xml  { render :xml => @location, :status => :created, :location => @location }
       else
@@ -63,6 +66,9 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
+      	expire_page :action => :index
+	    expire_page :action => :show, :id => params[:id]
+	    
         format.html { redirect_to(@location, :notice => 'Location was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -77,6 +83,9 @@ class LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
+    
+    expire_page :action => :index
+    expire_page :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(locations_url) }
