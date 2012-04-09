@@ -51,7 +51,7 @@ Samaranch.VenueMapLoc = function(params) {
 			
 			if (!!mapId) {
 				$.getJSON('/venue_maps/' + mapId + '.json', {}, function(data){
-					var url = base + '/map_images/' + data.venue_map.venue_map.id + 
+					var url = base + '/venue_maps/' + data.venue_map.venue_map.id + 
 							  '/original/' + data.venue_map.venue_map.map_image_file_name;
 					
 					state.mapLoc.changeImage(url);
