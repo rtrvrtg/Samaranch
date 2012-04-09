@@ -11,14 +11,12 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :title %>
-    <div class="controls"><%= f.text_field :title %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description %>
-    <div class="controls"><%= f.text_area :description %></div>
-  </div>
+  <%= bootstrap_field f, :title do %>
+    <%= f.text_field :title %>
+  <% end %>
+  <%= bootstrap_field f, :description do %>
+    <%= f.text_area :description %>
+  <% end %>
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary' %>
   </div>

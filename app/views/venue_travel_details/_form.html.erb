@@ -11,23 +11,20 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :venue_id %>
-    <div class="controls"><%= collection_select(:venue_travel_detail, 
+  <%= bootstrap_field f, :venue_id do %>
+    <%= collection_select(:venue_travel_detail, 
                           :venue_id, 
                           Venue.all, 
                           :id, 
                           :name, 
-                          :prompt => 'Select a venue') %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :method %>
-    <div class="controls"><%= f.text_field :method %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :details %>
-    <div class="controls"><%= f.text_area :details %></div>
-  </div>
+                          :prompt => 'Select a venue') %>
+  <% end %>
+  <%= bootstrap_field f, :method do %>
+    <%= f.text_field :method %>
+  <% end %>
+  <%= bootstrap_field f, :details do %>
+    <%= f.text_area :details %>
+  <% end %>
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary' %>
   </div>

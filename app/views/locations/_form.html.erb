@@ -13,40 +13,34 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :name %>
-    <div class="controls"><%= f.text_field :name %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description %>
-    <div class="controls"><%= f.text_area :description %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :venue_map_id %>
-	<div class="controls"><%= collection_select(:location, 
-					  :venue_map_id, 
-					  VenueMap.all, 
-					  :id, 
-					  :map_name, 
-					  :prompt => 'Select a venue map') %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :marker_id %>
-	<div class="controls"><%= collection_select(:location, 
+  <%= bootstrap_field f, :name do %>
+    <%= f.text_field :name %>
+  <% end %>
+  <%= bootstrap_field f, :description do %>
+    <%= f.text_area :description %>
+  <% end %>
+  <%= bootstrap_field f, :venue_map_id do %>
+    <%= collection_select(:location, 
+              :venue_map_id, 
+              VenueMap.all, 
+              :id, 
+              :map_name, 
+              :prompt => 'Select a venue map') %>
+  <% end %>
+  <%= bootstrap_field f, :marker_id do %>
+    <%= collection_select(:location, 
 					  :marker_id, 
 					  Marker.all, 
 					  :id, 
 					  :title, 
-					  :prompt => 'Select a marker') %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :x %>
-    <div class="controls"><%= f.text_field :x %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :y %>
-    <div class="controls"><%= f.text_field :y %></div>
-  </div>
+					  :prompt => 'Select a marker') %>
+  <% end %>
+  <%= bootstrap_field f, :x do %>
+    <%= f.text_field :x %>
+  <% end %>
+  <%= bootstrap_field f, :y do %>
+    <%= f.text_field :y %>
+  <% end %>
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary' %>
   </div>

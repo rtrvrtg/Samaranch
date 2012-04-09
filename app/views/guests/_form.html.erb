@@ -11,46 +11,38 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :name %>
-    <div class="controls"><%= f.text_field :name %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :photo %>
-    <div class="controls"><%= f.file_field :photo %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :sorting_name %>
-    <div class="controls"><%= f.text_field :sorting_name %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :bio %>
-    <div class="controls"><%= f.text_area :bio %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :website %>
-    <div class="controls"><%= f.text_area :website %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :twitter %>
-    <div class="controls"><%= f.text_area :twitter %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :facebook %>
-    <div class="controls"><%= f.text_area :facebook %></div>
-  </div>
+  <%= bootstrap_field f, :name do %>
+    <%= f.text_field :name %>
+  <% end %>
+  <%= bootstrap_field f, :photo do %>
+    <%= f.file_field :photo %>
+  <% end %>
+  <%= bootstrap_field f, :sorting_name do %>
+    <%= f.text_field :sorting_name %>
+  <% end %>
+  <%= bootstrap_field f, :bio do %>
+    <%= f.text_area :bio %>
+  <% end %>
+  <%= bootstrap_field f, :website do %>
+    <%= f.text_area :website %>
+  <% end %>
+  <%= bootstrap_field f, :twitter do %>
+    <%= f.text_area :twitter %>
+  <% end %>
+  <%= bootstrap_field f, :facebook do %>
+    <%= f.text_area :facebook %>
+  <% end %>
   
-  <div class="control-group">
-    <%= f.label :sessions %>
-    <div class="controls"><%= collection_select(:guest, 
+  <%= bootstrap_field f, :sessions do %>
+    <%= collection_select(:guest, 
                           :sessions, 
                           Session.all, 
                           :id, 
                           :title, 
                           {}, {
                           	:multiple => 'true'
-                          }) %></div>
-  </div>
+                          }) %>
+  <% end %>
   
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary' %>

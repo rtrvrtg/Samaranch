@@ -11,48 +11,40 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :name %>
-    <div class="controls"><%= f.text_field :name %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :logo %>
-    <div class="controls"><%= f.file_field :logo %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :sponsor_type_id %>
-    <div class="controls"><%= collection_select(:sponsor, 
+  <%= bootstrap_field f, :name do %>
+    <%= f.text_field :name %>
+  <% end %>
+  <%= bootstrap_field f, :logo do %>
+    <%= f.file_field :logo %>
+  <% end %>
+  <%= bootstrap_field f, :sponsor_type_id do %>
+    <%= collection_select(:sponsor, 
                           :sponsor_type_id, 
                           SponsorType.all, 
                           :id, 
                           :title, 
-                          :prompt => 'Select a sponsor type') %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description %>
-    <div class="controls"><%= f.text_area :description %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :website %>
-    <div class="controls"><%= f.text_area :website %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :twitter %>
-    <div class="controls"><%= f.text_area :twitter %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :facebook %>
-    <div class="controls"><%= f.text_area :facebook %></div>
-  </div>
-  <div class="control-group">
-    <%= f.label :location_id %>
-    <div class="controls"><%= collection_select(:sponsor, 
+                          :prompt => 'Select a sponsor type') %>
+  <% end %>
+  <%= bootstrap_field f, :description do %>
+    <%= f.text_area :description %>
+  <% end %>
+  <%= bootstrap_field f, :website do %>
+    <%= f.text_area :website %>
+  <% end %>
+  <%= bootstrap_field f, :twitter do %>
+    <%= f.text_area :twitter %>
+  <% end %>
+  <%= bootstrap_field f, :facebook do %>
+    <%= f.text_area :facebook %>
+  <% end %>
+  <%= bootstrap_field f, :location_id do %>
+    <%= collection_select(:sponsor, 
                           :location_id, 
                           Location.all, 
                           :id, 
                           :name, 
-                          :prompt => 'Select a location') %></div>
-  </div>
+                          :prompt => 'Select a location') %>
+  <% end %>
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary' %>
   </div>
