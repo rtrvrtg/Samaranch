@@ -1,11 +1,11 @@
 class ExportController < ApplicationController
   
-  caches_page :index
+  caches_action :index
   
   def index
     
     if request.query_parameters.has_key?('reset') then
-      expire_page :action => :index
+      expire_action :action => :index
     end
     
     respond_to do |format|

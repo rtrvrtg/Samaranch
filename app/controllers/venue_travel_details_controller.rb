@@ -1,7 +1,7 @@
 class VenueTravelDetailsController < ApplicationController
 
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
-  caches_page [:index, :show]
+  caches_action [:index, :show]
 
   # GET /venue_travel_details
   # GET /venue_travel_details.xml
@@ -48,7 +48,7 @@ class VenueTravelDetailsController < ApplicationController
 
     respond_to do |format|
       if @venue_travel_detail.save
-      	expire_page :action => :index
+      	expire_action :action => :index
       	
         format.html { redirect_to(@venue_travel_detail, :notice => 'Venue travel detail was successfully created.') }
         format.xml  { render :xml => @venue_travel_detail, :status => :created, :location => @venue_travel_detail }
@@ -66,8 +66,8 @@ class VenueTravelDetailsController < ApplicationController
 
     respond_to do |format|
       if @venue_travel_detail.update_attributes(params[:venue_travel_detail])
-      	expire_page :action => :index
-	    expire_page :action => :show, :id => params[:id]
+      	expire_action :action => :index
+	    expire_action :action => :show, :id => params[:id]
 	    
         format.html { redirect_to(@venue_travel_detail, :notice => 'Venue travel detail was successfully updated.') }
         format.xml  { head :ok }
@@ -84,8 +84,8 @@ class VenueTravelDetailsController < ApplicationController
     @venue_travel_detail = VenueTravelDetail.find(params[:id])
     @venue_travel_detail.destroy
     
-    expire_page :action => :index
-    expire_page :action => :show, :id => params[:id]
+    expire_action :action => :index
+    expire_action :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(venue_travel_details_url) }

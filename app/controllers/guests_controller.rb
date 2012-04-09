@@ -1,7 +1,7 @@
 class GuestsController < ApplicationController
   
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
-  caches_page [:index, :show]
+  caches_action [:index, :show]
   
   # GET /guests
   # GET /guests.xml
@@ -48,7 +48,7 @@ class GuestsController < ApplicationController
 
     respond_to do |format|
       if @guest.save
-      	expire_page :action => :index
+      	expire_action :action => :index
       	
         format.html { redirect_to(@guest, :notice => 'Guest was successfully created.') }
         format.xml  { render :xml => @guest, :status => :created, :location => @guest }
@@ -66,8 +66,8 @@ class GuestsController < ApplicationController
 
     respond_to do |format|
       if @guest.update_attributes(params[:guest])
-      	expire_page :action => :index
-        expire_page :action => :show, :id => params[:id]
+      	expire_action :action => :index
+        expire_action :action => :show, :id => params[:id]
         
         format.html { redirect_to(@guest, :notice => 'Guest was successfully updated.') }
         format.xml  { head :ok }
@@ -84,8 +84,8 @@ class GuestsController < ApplicationController
     @guest = Guest.find(params[:id])
     @guest.destroy
 
-	expire_page :action => :index
-    expire_page :action => :show, :id => params[:id]
+	expire_action :action => :index
+    expire_action :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(guests_url) }

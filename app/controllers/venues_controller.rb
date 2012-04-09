@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
   
   before_filter :authenticate, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
-  caches_page [:index, :show]
+  caches_action [:index, :show]
   
   # GET /venues
   # GET /venues.xml
@@ -48,7 +48,7 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.save
-      	expire_page :action => :index
+      	expire_action :action => :index
       	
         format.html { redirect_to(@venue, :notice => 'Venue was successfully created.') }
         format.xml  { render :xml => @venue, :status => :created, :location => @venue }
@@ -66,8 +66,8 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.update_attributes(params[:venue])
-        expire_page :action => :index
-		expire_page :action => :show, :id => params[:id]
+        expire_action :action => :index
+		expire_action :action => :show, :id => params[:id]
         
         format.html { redirect_to(@venue, :notice => 'Venue was successfully updated.') }
         format.xml  { head :ok }
@@ -84,8 +84,8 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     @venue.destroy
     
-	expire_page :action => :index
-    expire_page :action => :show, :id => params[:id]
+	expire_action :action => :index
+    expire_action :action => :show, :id => params[:id]
 
     respond_to do |format|
       format.html { redirect_to(venues_url) }
