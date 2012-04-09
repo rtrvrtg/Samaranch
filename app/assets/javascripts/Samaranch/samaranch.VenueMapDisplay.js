@@ -44,8 +44,8 @@ Samaranch.VenueMapDisplay = function(params) {
 						
 						if (markers.length > 0) {
 							var url = base + 
-							'/markers/' + markers[0].marker.id + 
-							'/original/' + markers[0].marker.marker_image_file_name;
+							'/markers/original/' + markers[0].marker.id + '/' + 
+							markers[0].marker.marker_image_file_name;
 							
 							state.mapLoc.addMarker(loc.x, loc.y, url, 
 							markers[0].marker.anchor_x, 
