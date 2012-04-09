@@ -51,8 +51,8 @@ Samaranch.MapLoc = function(params) {
 						.get(0).getContext('2d');
 			
 			$('#' + canv_id).mouseup(function(e) {
-				var x = e.offsetX,
-				y = e.offsetY;
+				var x = (e.offsetX || Math.round(e.clientX - $(e.target).offset().left)),
+				y = (e.offsetY || Math.round(e.clientY - $(e.target).offset().top));
 				
 				settings.touch_action(x, y);
 			});
