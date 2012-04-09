@@ -21,6 +21,8 @@ Samaranch.VenueMapLoc = function(params) {
 		img_src: null
 	};
 	
+	var base = Samaranch.Prefs.image_url_base || '/system';
+	
 	settings = Samaranch.setupParams(settings, params, {
 		container: {
 			type: Samaranch.Validator.COMPULSORY,
@@ -49,7 +51,7 @@ Samaranch.VenueMapLoc = function(params) {
 			
 			if (!!mapId) {
 				$.getJSON('/venue_maps/' + mapId + '.json', {}, function(data){
-					var url = '/system/map_images/' + data.venue_map.venue_map.id + 
+					var url = base + '/map_images/' + data.venue_map.venue_map.id + 
 							  '/original/' + data.venue_map.venue_map.map_image_file_name;
 					
 					state.mapLoc.changeImage(url);

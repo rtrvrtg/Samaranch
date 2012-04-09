@@ -31,6 +31,7 @@ Samaranch.VenueMapDisplay = function(params) {
 		
 		drawMarkers: function() {
 			var mapId = $('#' + settings.container).attr('data-mapid');
+			var base = Samaranch.Prefs.image_url_base || '/system';
 			
 			if (!!mapId) {
 				$.getJSON('/venue_maps/' + mapId + '.json', {}, function(data){
@@ -42,7 +43,8 @@ Samaranch.VenueMapDisplay = function(params) {
 						});
 						
 						if (markers.length > 0) {
-							var url = '/system/markers/' + markers[0].marker.id + 
+							var url = base + 
+							'/markers/' + markers[0].marker.id + 
 							'/original/' + markers[0].marker.marker_image_file_name;
 							
 							state.mapLoc.addMarker(loc.x, loc.y, url, 
