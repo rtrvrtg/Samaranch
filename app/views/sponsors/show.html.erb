@@ -5,11 +5,11 @@
   <%= @sponsor.name %>
 </p>
 
-<%= image_tag @sponsor.photo.url %>
+<%= image_tag @sponsor.logo.url %>
 
 <p>
   <b>Sponsor type:</b>
-  <%= @sponsor.sponsor_type_id %>
+  <%= @sponsor.sponsor_type.title %>
 </p>
 
 <p>
@@ -32,10 +32,12 @@
   <%= @sponsor.facebook %>
 </p>
 
+<% unless @sponsor.location.nil? %>
 <p>
   <b>Location:</b>
-  <%= @sponsor.location_id %>
+  <%= @sponsor.location.name %>
 </p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |

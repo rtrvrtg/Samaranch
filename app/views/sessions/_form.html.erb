@@ -29,7 +29,12 @@
                           :prompt => 'Select a location') %>
   <% end %>
   <%= bootstrap_field f, :session_type_id do %>
-    <%= f.text_field :session_type_id %>
+    <%= collection_select(:session, 
+                          :session_type_id, 
+                          SessionType.all, 
+                          :id, 
+                          :title, 
+                          :prompt => 'Select a session type') %>
   <% end %>
   <%= bootstrap_field f, :description do %>
     <%= f.text_area :description %>
@@ -37,7 +42,7 @@
   
   <%= bootstrap_field f, :guests do %>
     <%= collection_select(:session, 
-                          :guests, 
+                          :guest_ids, 
                           Guest.all, 
                           :id, 
                           :name, 
