@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223071948) do
+ActiveRecord::Schema.define(:version => 20120606235959) do
 
   create_table "guests", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(:version => 20120223071948) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
   end
+
+  create_table "guests_sessions", :id => false, :force => true do |t|
+    t.integer "guest_id"
+    t.integer "session_id"
+  end
+
+  add_index "guests_sessions", ["guest_id", "session_id"], :name => "index_guests_sessions_on_guest_id_and_session_id"
+  add_index "guests_sessions", ["session_id", "guest_id"], :name => "index_guests_sessions_on_session_id_and_guest_id"
 
   create_table "locations", :force => true do |t|
     t.string   "name"
