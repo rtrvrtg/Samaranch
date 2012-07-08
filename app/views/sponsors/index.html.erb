@@ -13,8 +13,12 @@
 <% @sponsors.each do |sponsor| %>
   <tr>
     <td><%= sponsor.name %></td>
-    <td><%= sponsor.sponsor_type.title %></td>
-    <td><%= sponsor.location.name %></td>
+    <td><% unless sponsor.sponsor_type.nil? %>
+      <%= sponsor.sponsor_type.title %>
+    <% end %></td>
+    <td><% unless sponsor.location.nil? %>
+      <%= sponsor.location.name %>
+    <% end %></td>
     <td><%= link_to 'Show', sponsor %></td>
     <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
     <td><%= link_to 'Destroy', sponsor, :confirm => 'Are you sure?', :method => :delete %></td>

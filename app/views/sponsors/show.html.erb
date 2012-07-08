@@ -5,12 +5,16 @@
   <%= @sponsor.name %>
 </p>
 
+<% unless @sponsor.logo.nil? %>
 <%= image_tag @sponsor.logo.url %>
+<% end %>
 
+<% unless @sponsor.sponsor_type.nil? %>
 <p>
   <b>Sponsor type:</b>
   <%= @sponsor.sponsor_type.title %>
 </p>
+<% end %>
 
 <p>
   <b>Description:</b>
