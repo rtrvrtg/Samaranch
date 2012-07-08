@@ -18,7 +18,9 @@
     <td><%= session.start %></td>
     <td><%= session.end %></td>
     <td><%= session.location.name %></td>
-    <td><%= session.session_type.title %></td>
+    <td><% unless @session.location.nil? %>
+      <%= session.session_type.title %>
+    <% end %></td>
     <td><%= link_to 'Show', session %></td>
     <td><%= link_to 'Edit', edit_session_path(session) %></td>
     <td><%= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete %></td>

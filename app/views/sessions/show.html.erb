@@ -15,10 +15,12 @@
   <%= @session.end %>
 </p>
 
+<% unless @session.location.nil? %>
 <p>
   <b>Location:</b>
   <%= @session.location.name %>
 </p>
+<% end %>
 
 <p>
   <b>Session type:</b>
