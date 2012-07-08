@@ -18,7 +18,7 @@
     <td><%= session.start %></td>
     <td><%= session.end %></td>
     <td><%= session.location.name %></td>
-    <td><% unless @session.location.nil? %>
+    <td><% unless session.location.nil? %>
       <%= session.session_type.title %>
     <% end %></td>
     <td><%= link_to 'Show', session %></td>
