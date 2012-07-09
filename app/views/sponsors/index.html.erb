@@ -20,8 +20,8 @@
     <td><% unless sponsor.location.nil? %>
       <%= sponsor.location.name %>
     <% end %></td>
-    <td><% unless @sponsor.logo.nil? %>
-      <%= image_tag @sponsor.logo.url(:smallthumb) %>
+    <td><% unless sponsor.logo.nil? %>
+      <%= image_tag sponsor.logo.url(:smallthumb) %>
     <% end %></td>
     <td><%= link_to 'Show', sponsor %></td>
     <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
