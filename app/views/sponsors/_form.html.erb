@@ -26,16 +26,16 @@
                           :prompt => 'Select a sponsor type') %>
   <% end %>
   <%= bootstrap_field f, :description do %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :size => '80x5' %>
   <% end %>
   <%= bootstrap_field f, :website do %>
-    <%= f.text_area :website %>
+    <%= f.text_area :website, :size => '80x3' %>
   <% end %>
   <%= bootstrap_field f, :twitter do %>
-    <%= f.text_area :twitter %>
+    <%= f.text_area :twitter, :size => '80x3' %>
   <% end %>
   <%= bootstrap_field f, :facebook do %>
-    <%= f.text_area :facebook %>
+    <%= f.text_area :facebook, :size => '80x3' %>
   <% end %>
   <%= bootstrap_field f, :location_id do %>
     <%= collection_select(:sponsor, 
