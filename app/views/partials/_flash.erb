@@ -1,0 +1,12 @@
+<% unless flash.nil? %>
+  <% puts flash %>
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-<%= type %>">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= msg.message %>
+      <% if !msg.prompt.nil? %>
+        <a href="<%= msg.prompt[:href] %>"><%= msg.prompt[:title] %></a>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

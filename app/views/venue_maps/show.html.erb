@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %> <%= link_to 'Create New Venue Map', new_venue_map_path %></p>
 
 <div id="map-container" data-mapid="<%= @venue_map.id %>">
 <%= image_tag(@venue_map.map_image.url, :class => "map-image") %>
