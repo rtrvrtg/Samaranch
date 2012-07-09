@@ -21,7 +21,7 @@
       <%= sponsor.location.name %>
     <% end %></td>
     <td><% unless sponsor.logo.nil? %>
-      <%= image_tag sponsor.logo.url(:smallthumb) %>
+      <%= image_tag sponsor.logo.url(:thumb) %>
     <% end %></td>
     <td><%= link_to 'Show', sponsor %></td>
     <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
