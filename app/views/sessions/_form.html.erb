@@ -16,6 +16,7 @@
   <% end %>
   <%= bootstrap_field f, :start do %>
     <%= f.text_field :start, :class => 'datepicker' %>
+    <a href="#" class="copy-time" data-source="session_start" data-destination="session_end">Copy Start to End</a>
   <% end %>
   <%= bootstrap_field f, :end do %>
     <%= f.text_field :end, :class => 'datepicker' %>
@@ -63,6 +64,12 @@ $(function() {
   	dateFormat: 'yy-mm-dd', 
   	timeFormat: 'hh:mm:ss', 
   	ampm: false
+  });
+  
+  $('.copy-time').click(function(e){
+    e.preventDefault();
+    var val = $('#' + $(this).attr('data-source')).val();
+    $('#' + $(this).attr('data-destination')).val(val);
   });
 });
 
