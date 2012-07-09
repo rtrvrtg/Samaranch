@@ -20,6 +20,10 @@
   <% end %>
   <%= bootstrap_field f, :end do %>
     <%= f.text_field :end, :class => 'datepicker' %>
+    <a href="#" class="adjust-time" data-mins="30" data-destination="session_end">+30 minutes</a>
+    <a href="#" class="adjust-time" data-mins="60" data-destination="session_end">+1 hour</a>
+    <a href="#" class="adjust-time" data-mins="90" data-destination="session_end">+1 hour 30 minutes</a>
+    <a href="#" class="adjust-time" data-mins="120" data-destination="session_end">+2 hour</a>
   <% end %>
   <%= bootstrap_field f, :location_id do %>
     <%= collection_select(:session, 
@@ -70,6 +74,56 @@ $(function() {
     e.preventDefault();
     var val = $('#' + $(this).attr('data-source')).val();
     $('#' + $(this).attr('data-destination')).val(val);
+  });
+  
+  var dateAdjust = function(source) {
+    
+    var d = new Date(Date.parse(source));
+    
+    var makeArrayOf = function(value, length) {
+        alert(length);
+      var arr = [], i = length;
+      while (i--) {
+        arr[i] = value;
+      }
+      return arr;
+    }
+    
+    var pad = function(val, l, pad) {
+      if (!pad) pad = '0';
+      val = val + '';
+      if (val.length >= l) return val;
+      val = makeArrayOf(pad, l - val.length).join('') + val;
+      return val;
+    };
+    
+    var addMins = function(mins) {
+      mins = +(mins);
+      d = new Date(d.getTime() + (mins * 60000));
+    };
+    
+    var render = function() {
+      return [
+         d.getFullYear(), 
+        pad((d.getMonth() + 1), 2), 
+        pad(d.getDate(), 2)
+      ].join('-') + 
+      ' ' + 
+      [
+        pad(d.getHours(), 2), 
+        pad(d.getMinutes(), 2), 
+        pad(d.getSeconds(), 2)
+      ].join(':');
+    };
+    
+  };
+  
+  $('.adjust-time').click(function(e){
+    e.preventDefault();
+    var d = $('#' + $(this).attr('data-destination'));
+    var da = new dateAdjust(d.val());
+    da.addMins($(this).attr('data-mins'));
+    d.val(da.render());
   });
 });
 
