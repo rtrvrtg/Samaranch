@@ -116,6 +116,12 @@ $(function() {
       ].join(':');
     };
     
+    var pub = {
+      addMins: addMins,
+      render: render
+    };
+    
+    return pub;
   };
   
   $('.adjust-time').click(function(e){
