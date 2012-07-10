@@ -53,14 +53,6 @@ module Paperclip
           rescue Net::SFTP::StatusException
             # ignore file-not-found, let everything else pass
           end
-          begin
-            while(true)
-              path = File.dirname(path)
-              sftp.rmdir(path)
-            end
-          rescue Net::SFTP::StatusException
-            # Stop trying to remove parent directories
-          end
         end
         @queued_for_delete = []
       end
